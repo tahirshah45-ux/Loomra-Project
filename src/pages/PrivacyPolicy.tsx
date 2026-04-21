@@ -6,7 +6,7 @@
 
 import React from 'react';
 import { ArrowLeft } from 'lucide-react';
-import type { Page } from '../App';
+import type { Page } from '../types';
 
 function PolicyLayout({ title, children, setPage }: { title: string; children: React.ReactNode; setPage: (p: Page) => void }) {
   return (

@@ -4,7 +4,7 @@
  */
 import { createContext, useContext, ReactNode } from 'react';
 import { db, auth, storage, googleProvider, isAdmin, ADMIN_EMAIL } from '../lib/firebase';
-import type { Product, Order, GlobalSettings } from '../App';
+import type { Product, Order, GlobalSettings } from '../types';
 
 // Types for the context
 export interface FirebaseContextType {

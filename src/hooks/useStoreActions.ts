@@ -1,6 +1,6 @@
 import { useState, useCallback } from 'react';
 import { toast } from 'react-toastify';
-import { Product, CartItem, FlyingItem, GlobalSettings, AnnouncementSettings, HomeContentSettings, AISettings, SMTPSettings, AutomationRule, Order, OrderStatus, AutomationEvent, AutomationLog, TimelineEvent } from '../App';
+import type { Product, CartItem, FlyingItem, GlobalSettings, AnnouncementSettings, HomeContentSettings, AISettings, SMTPSettings, AutomationRule, Order, OrderStatus, AutomationEvent, AutomationLog, TimelineEvent } from '../types';
 import { doc, setDoc, updateDoc, writeBatch, getDocs, collection } from 'firebase/firestore';
 import { db } from '../lib/firebase';
 

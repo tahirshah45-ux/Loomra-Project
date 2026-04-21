@@ -1,0 +1,16 @@
+{
+  "name": "Loomra Pakistan",
+  "short_name": "Loomra",
+  "description": "Minimal streetwear caps and tees from Pakistan",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#000000",
+  "theme_color": "#ff0000",
+  "icons": [
+    {
+      "src": "/favicon.ico",
+      "sizes": "48x48",
+      "type": "image/x-icon"
+    }
+  ]
+}

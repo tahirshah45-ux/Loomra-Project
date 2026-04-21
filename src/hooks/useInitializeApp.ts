@@ -3,7 +3,7 @@ import { onAuthStateChanged } from 'firebase/auth';
 import { collection, getDocs, doc, setDoc, serverTimestamp, query, limit } from 'firebase/firestore';
 import { auth, db } from '../lib/firebase';
 import { toast } from 'react-toastify';
-import { FirebaseUser, GlobalSettings, AISettings, Order, Product, AnnouncementSettings, HomeContentSettings, SMTPSettings, AutomationRule } from '../App';
+import type { FirebaseUser, GlobalSettings, AISettings, Order, Product, AnnouncementSettings, HomeContentSettings, SMTPSettings, AutomationRule } from '../types';
 
 interface UseInitializeAppProps {
   apiHealth: { status: string, isConfigMissing: boolean };
