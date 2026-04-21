@@ -145,6 +145,7 @@ export interface AISettings {
 }
 
 export interface GlobalSettings {
+export type Settings = GlobalSettings;
   siteTitle: string;
   siteDescription: string;
   organizationName: string;
