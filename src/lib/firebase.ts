@@ -14,22 +14,44 @@ const firebaseConfig = {
   measurementId: import.meta.env.VITE_FIREBASE_MEASUREMENT_ID || ""
 };
 
+// Validate config before initializing - prevent crashes with missing env vars
+const isFirebaseConfigured = firebaseConfig.apiKey && 
+  firebaseConfig.projectId && 
+  firebaseConfig.authDomain;
+
 // Debug: Log project ID to verify env vars are reaching frontend
-console.log("Firebase Project ID:", import.meta.env.VITE_FIREBASE_PROJECT_ID);
-console.log("Firebase Auth Domain:", import.meta.env.VITE_FIREBASE_AUTH_DOMAIN);
+console.log("Firebase Project ID:", import.meta.env.VITE_FIREBASE_PROJECT_ID || 'NOT SET');
+console.log("Firebase Auth Domain:", import.meta.env.VITE_FIREBASE_AUTH_DOMAIN || 'NOT SET');
+console.log("Firebase Configured:", isFirebaseConfigured);
 
-// Initialize Firebase
-const app = initializeApp(firebaseConfig);
+// Initialize Firebase only if configured
+let app: any = null;
+let db: ReturnType<typeof getFirestore> | null = null;
+let auth: ReturnType<typeof getAuth> | null = null;
+let storage: ReturnType<typeof getStorage> | null = null;
 
-// Use default database from the live Firebase project (no hard-coded database name)
-export const db = getFirestore(app);
+if (isFirebaseConfigured) {
+  try {
+    app = initializeApp(firebaseConfig);
+    db = getFirestore(app);
+    auth = getAuth(app);
+    storage = getStorage(app);
+  } catch (error) {
+    console.error("Firebase initialization failed:", error);
+    app = null;
+  }
+} else {
+  console.warn("Firebase not configured - environment variables may be missing");
+}
 
-export const auth = getAuth(app);
-export const storage = getStorage(app);
-export const googleProvider = new GoogleAuthProvider();
+// Export db, auth, storage (will be null if not configured)
+export { db, auth, storage };
 
 // Admin email for access control
 export const ADMIN_EMAIL = "tahirshah45@gmail.com";
+
+// Google Auth Provider (create lazily to avoid issues when Firebase isn't configured)
+export const googleProvider = new GoogleAuthProvider();
 
 /**
  * Check if the user is an admin
