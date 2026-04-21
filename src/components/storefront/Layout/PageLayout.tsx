@@ -4,7 +4,7 @@ import Navigation from '../../layout/Navigation';
 import Footer from '../../layout/Footer';
 import CartDrawer from '../CartDrawer';
 import AuthModals from '../AuthModals';
-import { Settings, UserProfile, Order, Product, CartItem } from '../../../App';
+import type { Settings, UserProfile, Order, Product, CartItem } from '../../types';
 
 interface PageLayoutProps {
   children: React.ReactNode;
