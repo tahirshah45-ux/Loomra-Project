@@ -83,3 +83,6 @@ export const Header = ({ setPage, onOpenSidebar, settings, onOpenCart, cartCount
     </header>
   );
 };
+
+// Re-export as default for backward compatibility
+export default Header;

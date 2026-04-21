@@ -61,3 +61,6 @@ export const Footer = ({ setPage, setIsChatOpen, settings }: FooterProps) => (
     </div>
   </footer>
 );
+
+// Re-export as default for backward compatibility
+export default Footer;
